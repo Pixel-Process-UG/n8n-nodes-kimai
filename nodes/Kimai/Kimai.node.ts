@@ -1245,7 +1245,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/projects',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									customer: '={{$parameter["customer"]}}',
@@ -1317,7 +1316,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/projects/{{$parameter["id"]}}',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"] || undefined}}',
 									customer: '={{$parameter["customer"] || undefined}}',
@@ -1344,7 +1342,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/projects/{{$parameter["id"]}}/meta',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["metaName"]}}',
 									value: '={{$parameter["metaValue"]}}',
@@ -1371,7 +1368,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '=/api/projects/{{$parameter["id"]}}/rates',
-								bodyContentType: 'json',
 								body: {
 									user: '={{$parameter["rateUser"] || undefined}}',
 									rate: '={{$parameter["rate"]}}',
@@ -1787,7 +1783,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/tags',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									color: '={{$parameter["color"] || undefined}}',
@@ -1906,7 +1901,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/teams',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									members: '={{$parameter["members"]}}',
@@ -1956,7 +1950,6 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/teams/{{$parameter["id"]}}',
-								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"] || undefined}}',
 									members: '={{$parameter["members"] || undefined}}',

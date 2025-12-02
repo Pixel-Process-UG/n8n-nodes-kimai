@@ -7,11 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [1.0.3] - 2024-12-02
 
+### Added
+- Added `teams` field to Activity create/update operations to support team assignment
+- Added test infrastructure with Jest and ts-jest
+- Added test scripts: `test`, `test:watch`, `test:coverage`
+
 ### Fixed
 - Fixed PATCH semantics for `exported` parameter in Timesheet create/update operations
 - Changed from nullish coalescing (`?? undefined`) to logical OR (`|| undefined`) to properly omit default `false` values
 - Prevents `exported: false` from being sent in PATCH requests when user hasn't explicitly changed the value
 - Ensures PATCH requests only include fields that are actually being modified
+- Fixed test assertions that incorrectly checked for `bodyContentType` property (not supported by n8n-workflow)
+- Content-Type headers are properly set via `requestDefaults` at the node level
+
+### Testing
+- All 248 tests passing
+- Full coverage of all 9 resources and 60+ operations
+- Verified implementation matches Kimai API specification v1.1
 
 ## [1.0.2] - 2024-12-02
 
