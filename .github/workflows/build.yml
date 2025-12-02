@@ -54,6 +54,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Verify dist folder exists
+        run: |
+          echo "Checking if dist folder was created..."
+          ls -la dist/
+          echo "Contents of dist/nodes/Kimai:"
+          ls -la dist/nodes/Kimai/
+
       - name: Start Docker Compose
         run: docker compose up -d
 
@@ -64,8 +71,19 @@ jobs:
       - name: Check n8n logs
         run: docker compose logs n8n
 
-      - name: Verify node loaded
-        run: docker compose exec n8n ls -la /data/custom-nodes/n8n-nodes-kimai/dist
+      - name: Verify custom-nodes directory
+        run: docker compose exec -T n8n ls -la /data/custom-nodes/
+
+      - name: Verify node directory exists
+        run: docker compose exec -T n8n ls -la /data/custom-nodes/n8n-nodes-kimai/
+
+      - name: Verify node loaded (dist folder)
+        run: docker compose exec -T n8n ls -la /data/custom-nodes/n8n-nodes-kimai/dist
+
+      - name: Verify compiled node files
+        run: |
+          docker compose exec -T n8n ls -la /data/custom-nodes/n8n-nodes-kimai/dist/nodes/Kimai/
+          docker compose exec -T n8n ls -la /data/custom-nodes/n8n-nodes-kimai/dist/credentials/
 
       - name: Stop Docker Compose
         run: docker compose down
