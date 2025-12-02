@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2024-12-02
+
+### Fixed
+- Fixed "This form should not contain extra fields" validation error when creating/updating resources
+- All create and update operations now properly filter out empty/undefined optional fields
+- Applied fix to all resources: Activity, Customer, Project, Tag, Team, Timesheet, User
+- Boolean fields now use nullish coalescing to preserve explicit `false` values
+- Rate operations now properly handle optional fields
+
 ## [1.0.1] - 2024-12-02
 
 ### Fixed
@@ -47,6 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ES2020 target
 - CommonJS module format
 
+[1.0.2]: https://github.com/Pixel-Process-UG/n8n-nodes-kimai/releases/tag/v1.0.2
 [1.0.1]: https://github.com/Pixel-Process-UG/n8n-nodes-kimai/releases/tag/v1.0.1
 [1.0.0]: https://github.com/Pixel-Process-UG/n8n-nodes-kimai/releases/tag/v1.0.0
 
