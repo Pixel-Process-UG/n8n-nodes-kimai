@@ -24,7 +24,7 @@ npm run build
 
 # Start Docker Compose
 echo "Starting n8n container..."
-docker-compose up -d
+docker compose up -d 2>/dev/null || docker-compose up -d
 
 # Wait for n8n to be ready
 echo "Waiting for n8n to start..."
@@ -70,7 +70,7 @@ echo "  Password: admin"
 echo ""
 echo "The Kimai node should now be available in the node list."
 echo ""
-echo "To stop n8n: docker-compose down"
-echo "To view logs: docker-compose logs -f"
+echo "To stop n8n: docker compose down (or docker-compose down)"
+echo "To view logs: docker compose logs -f (or docker-compose logs -f)"
 echo "To rebuild node: ./scripts/rebuild.sh"
 
