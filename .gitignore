@@ -27,6 +27,19 @@ yarn-error.log*
 
 # Testing
 coverage/
+test/
+*.test.ts
+jest.config.js
 
 # Docker
 .docker/
+
+# Package manager
+package-lock.json
+
+# API docs (development only)
+api-docs.json
+
+# Temporary files
+*.tmp
+*.temp

@@ -1,0 +1,31 @@
+# Source files
+credentials/**/*.ts
+nodes/**/*.ts
+!dist/**/*
+
+# Development
+tsconfig.json
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Testing
+scripts/
+docker-compose.yml
+README.DOCKER.md
+Dockerfile.dev
+
+# Documentation (keep main README)
+*.plan.md
+
+# Git
+.git/
+.gitignore
+
+# Misc
+.DS_Store
+*.log
+node_modules/
+api-docs.json
+

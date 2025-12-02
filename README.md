@@ -24,26 +24,27 @@ An n8n community node for integrating with [Kimai](https://www.kimai.org/) time-
 
 ## Installation
 
+### Community Nodes (Recommended)
+
+Install directly from n8n:
+
+1. Go to **Settings** → **Community Nodes**
+2. Click **Install**
+3. Enter: `n8n-nodes-kimai`
+4. Click **Install**
+
 ### Manual Installation
 
-1. Navigate to your n8n custom nodes directory:
-   ```bash
-   mkdir -p ~/.n8n/nodes
-   cd ~/.n8n/nodes
-   ```
-
-2. Install the node:
-   ```bash
-   npm install n8n-nodes-kimai
-   ```
-
-3. Restart n8n to load the new node.
-
-### Using npm
-
 ```bash
+cd ~/.n8n/nodes
 npm install n8n-nodes-kimai
 ```
+
+Restart n8n to load the node.
+
+### Docker Installation
+
+See [README.DOCKER.md](README.DOCKER.md) for Docker-based development setup.
 
 ## Credentials Setup
 
@@ -266,6 +267,10 @@ For detailed API documentation, refer to:
 
 MIT
 
+## Development
+
+See [README.DOCKER.md](README.DOCKER.md) for local development setup with Docker.
+
 ## Support
 
 - [Kimai Documentation](https://www.kimai.org/documentation/)
@@ -274,12 +279,9 @@ MIT
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our development process and how to submit pull requests.
 
 ## Changelog
 
-### 1.0.0
-- Initial release
-- Full API coverage for all public endpoints
-- Support for all resources: Activity, Customer, Project, Tag, Team, Timesheet, User, Invoice, Default
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
