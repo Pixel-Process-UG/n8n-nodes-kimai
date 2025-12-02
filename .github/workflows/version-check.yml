@@ -2,36 +2,41 @@ name: Version Check
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
-  version-check:
+  check-version:
     runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
-    
-    - name: Get version from package.json
-      id: package-version
-      run: |
-        VERSION=$(node -p "require('./package.json').version")
-        echo "version=$VERSION" >> $GITHUB_OUTPUT
-    
-    - name: Check if version was bumped
-      run: |
-        git fetch origin main:main
-        MAIN_VERSION=$(git show main:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf8')).version")
-        PR_VERSION=${{ steps.package-version.outputs.version }}
-        
-        echo "Main branch version: $MAIN_VERSION"
-        echo "PR version: $PR_VERSION"
-        
-        if [ "$MAIN_VERSION" = "$PR_VERSION" ]; then
-          echo "❌ Version not bumped! Please update version in package.json"
-          exit 1
-        else
-          echo "✅ Version bumped from $MAIN_VERSION to $PR_VERSION"
-        fi
 
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Get PR version
+        id: pr-version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Get main version
+        id: main-version
+        run: echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Compare versions
+        run: |
+          PR_VERSION=${{ steps.pr-version.outputs.version }}
+          MAIN_VERSION=${{ steps.main-version.outputs.version }}
+          
+          if [ "$PR_VERSION" == "$MAIN_VERSION" ]; then
+            echo "❌ Version not updated! Please bump version in package.json"
+            echo "Current: $MAIN_VERSION"
+            echo "PR: $PR_VERSION"
+            exit 1
+          else
+            echo "✅ Version updated from $MAIN_VERSION to $PR_VERSION"
+          fi
