@@ -1,0 +1,8 @@
+FROM n8nio/n8n:latest
+
+# Install the Kimai node
+WORKDIR /home/node/.n8n/custom
+RUN npm install /workspace --production || true
+
+WORKDIR /home/node
+

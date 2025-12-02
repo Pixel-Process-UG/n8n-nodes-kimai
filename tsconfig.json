@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "ES2020",
+		"lib": ["ES2020"],
+		"declaration": true,
+		"outDir": "./dist",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"moduleResolution": "node",
+		"typeRoots": ["node_modules/@types"]
+	},
+	"include": ["credentials/**/*", "nodes/**/*", "nodes/**/*.json"],
+	"exclude": ["node_modules", "dist"]
+}
+
