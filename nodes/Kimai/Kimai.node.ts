@@ -96,6 +96,7 @@ export class Kimai implements INodeType {
 								body: {
 									name: '={{$parameter["name"]}}',
 									project: '={{$parameter["project"] || undefined}}',
+									teams: '={{$parameter["teams"] || undefined}}',
 									number: '={{$parameter["number"] || undefined}}',
 									comment: '={{$parameter["comment"] || undefined}}',
 									visible: '={{$parameter["visible"] ?? true}}',
@@ -158,6 +159,7 @@ export class Kimai implements INodeType {
 								body: {
 									name: '={{$parameter["name"] || undefined}}',
 									project: '={{$parameter["project"] || undefined}}',
+									teams: '={{$parameter["teams"] || undefined}}',
 									number: '={{$parameter["number"] || undefined}}',
 									comment: '={{$parameter["comment"] || undefined}}',
 									visible: '={{$parameter["visible"] ?? undefined}}',
@@ -259,6 +261,19 @@ export class Kimai implements INodeType {
 					show: {
 						resource: ['activity'],
 						operation: ['create', 'update', 'getAll'],
+					},
+				},
+				default: '',
+			},
+			{
+				displayName: 'Team ID',
+				name: 'teams',
+				type: 'string',
+				description: 'Team ID to assign to this activity',
+				displayOptions: {
+					show: {
+						resource: ['activity'],
+						operation: ['create', 'update'],
 					},
 				},
 				default: '',
