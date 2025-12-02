@@ -1230,6 +1230,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/projects',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									customer: '={{$parameter["customer"]}}',
@@ -1301,6 +1302,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/projects/{{$parameter["id"]}}',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"] || undefined}}',
 									customer: '={{$parameter["customer"] || undefined}}',
@@ -1327,6 +1329,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/projects/{{$parameter["id"]}}/meta',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["metaName"]}}',
 									value: '={{$parameter["metaValue"]}}',
@@ -1353,6 +1356,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '=/api/projects/{{$parameter["id"]}}/rates',
+								bodyContentType: 'json',
 								body: {
 									user: '={{$parameter["rateUser"] || undefined}}',
 									rate: '={{$parameter["rate"]}}',
@@ -1768,6 +1772,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/tags',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									color: '={{$parameter["color"] || undefined}}',
@@ -1886,6 +1891,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'POST',
 								url: '/api/teams',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"]}}',
 									members: '={{$parameter["members"]}}',
@@ -1935,6 +1941,7 @@ export class Kimai implements INodeType {
 							request: {
 								method: 'PATCH',
 								url: '=/api/teams/{{$parameter["id"]}}',
+								bodyContentType: 'json',
 								body: {
 									name: '={{$parameter["name"] || undefined}}',
 									members: '={{$parameter["members"] || undefined}}',
@@ -2161,19 +2168,19 @@ export class Kimai implements INodeType {
 								qs: {
 									full: '={{$parameter["full"]}}',
 								},
-								body: {
-									begin: '={{$parameter["begin"]}}',
-									end: '={{$parameter["end"] || undefined}}',
-									project: '={{$parameter["project"]}}',
-									activity: '={{$parameter["activity"]}}',
-									description: '={{$parameter["description"] || undefined}}',
-									fixedRate: '={{$parameter["fixedRate"] || undefined}}',
-									hourlyRate: '={{$parameter["hourlyRate"] || undefined}}',
-									user: '={{$parameter["user"] || undefined}}',
-									tags: '={{$parameter["tags"] || undefined}}',
-									exported: '={{$parameter["exported"] || undefined}}',
-									billable: '={{$parameter["billable"] ?? true}}',
-								},
+							body: {
+								begin: '={{$parameter["begin"]}}',
+								end: '={{$parameter["end"] || undefined}}',
+								project: '={{$parameter["project"]}}',
+								activity: '={{$parameter["activity"]}}',
+								description: '={{$parameter["description"] || undefined}}',
+								fixedRate: '={{$parameter["fixedRate"] || undefined}}',
+								hourlyRate: '={{$parameter["hourlyRate"] || undefined}}',
+								user: '={{$parameter["user"] || undefined}}',
+								tags: '={{$parameter["tags"] || undefined}}',
+								exported: '={{$parameter["exported"] ?? undefined}}',
+								billable: '={{$parameter["billable"] ?? true}}',
+							},
 							},
 						},
 					},
