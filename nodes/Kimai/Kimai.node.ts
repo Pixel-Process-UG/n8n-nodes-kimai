@@ -128,26 +128,25 @@ export class Kimai implements INodeType {
 							},
 						},
 					},
-					{
-						name: 'Get All',
-						value: 'getAll',
-						action: 'Get all activities',
-						routing: {
-							request: {
-								method: 'GET',
-								url: '/api/activities',
-								qs: {
-									project: '={{$parameter["project"]}}',
-									'projects[]': '={{$parameter["projects"]}}',
-									visible: '={{$parameter["visible"]}}',
-									globals: '={{$parameter["globals"]}}',
-									orderBy: '={{$parameter["orderBy"]}}',
-									order: '={{$parameter["order"]}}',
-									term: '={{$parameter["term"]}}',
-								},
+				{
+					name: 'Get All',
+					value: 'getAll',
+					action: 'Get all activities',
+					routing: {
+						request: {
+							method: 'GET',
+							url: '/api/activities',
+							qs: {
+								project: '={{$parameter["project"] || undefined}}',
+								visible: '={{$parameter["visible"]}}',
+								globals: '={{$parameter["globals"]}}',
+								orderBy: '={{$parameter["orderBy"]}}',
+								order: '={{$parameter["order"]}}',
+								term: '={{$parameter["term"] || undefined}}',
 							},
 						},
 					},
+				},
 					{
 						name: 'Update',
 						value: 'update',
