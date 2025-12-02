@@ -9,13 +9,13 @@
 		"timesheet"
 	],
 	"license": "MIT",
-	"homepage": "https://github.com/fwartner/n8n-kimai",
+	"homepage": "https://github.com/Pixel-Process-UG/n8n-nodes-kimai",
 	"author": {
-		"name": "fwartner"
+		"name": "Florian Wartner <florian@pixelandprocess.de>"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/fwartner/n8n-kimai.git"
+		"url": "git+https://github.com/Pixel-Process-UG/n8n-nodes-kimai.git"
 	},
 	"main": "index.js",
 	"scripts": {
