@@ -2186,7 +2186,7 @@ export class Kimai implements INodeType {
 								hourlyRate: '={{$parameter["hourlyRate"] || undefined}}',
 								user: '={{$parameter["user"] || undefined}}',
 								tags: '={{$parameter["tags"] || undefined}}',
-								exported: '={{$parameter["exported"] ?? undefined}}',
+								exported: '={{$parameter["exported"] || undefined}}',
 								billable: '={{$parameter["billable"] ?? true}}',
 							},
 							},

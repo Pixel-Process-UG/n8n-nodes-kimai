@@ -13,10 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added test scripts: `test`, `test:watch`, `test:coverage`
 
 ### Fixed
-- Fixed PATCH semantics for `exported` parameter in Timesheet create/update operations
+- Fixed `exported` parameter semantics in Timesheet create and update operations
 - Changed from nullish coalescing (`?? undefined`) to logical OR (`|| undefined`) to properly omit default `false` values
-- Prevents `exported: false` from being sent in PATCH requests when user hasn't explicitly changed the value
-- Ensures PATCH requests only include fields that are actually being modified
+- Prevents `exported: false` from being sent when user hasn't explicitly set the value
+- Ensures both POST (create) and PATCH (update) requests only include fields that are explicitly set
 - Fixed test assertions that incorrectly checked for `bodyContentType` property (not supported by n8n-workflow)
 - Content-Type headers are properly set via `requestDefaults` at the node level
 
