@@ -239,49 +239,224 @@ The node will return error responses from the Kimai API. Common errors:
 - **404**: Resource not found
 - **422**: Validation error (check request body)
 
+## Compatibility
+
+- Minimum n8n version: 0.180.0
+- Tested against n8n version: 1.0.0+
+- Kimai API: Compatible with Kimai v2.0+
+
+## Resources
+
+- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
+- [Kimai API documentation](https://www.kimai.org/documentation/rest-api.html)
+- [Kimai website](https://www.kimai.org/)
+
 ## Development
 
-### Building
+### Prerequisites
+
+- Node.js (v18.10.0 or higher)
+- npm
+- Docker and Docker Compose (for testing)
+
+### Setup Development Environment
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Pixel-Process-UG/n8n-nodes-kimai.git
+   cd n8n-nodes-kimai
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Build the node:
+   ```bash
+   npm run build
+   ```
+
+4. Start the development environment:
+   ```bash
+   bash scripts/setup.sh
+   ```
+   Or manually with Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+5. Access n8n at http://localhost:5678
+   - Default credentials are configured in your docker-compose.yml
+
+### Watch Mode
+
+To automatically rebuild on file changes:
 
 ```bash
-npm run build
+npm run dev
 ```
 
-### Linting
+### Testing the Node
+
+1. Build the node:
+   ```bash
+   npm run build
+   ```
+
+2. Start the test environment:
+   ```bash
+   bash scripts/setup.sh
+   ```
+
+3. In n8n, add the Kimai node to a workflow and test the operations
+
+### Project Structure
+
+```
+n8n-kimai/
+├── credentials/
+│   └── KimaiApi.credentials.ts    # API credentials configuration
+├── nodes/
+│   └── Kimai/
+│       └── Kimai.node.ts          # Main node implementation
+├── icons/
+│   └── kimai.svg                  # Node icon
+├── scripts/
+│   ├── build.sh                   # Build script
+│   ├── setup.sh                   # Development setup
+│   └── rebuild.sh                 # Rebuild helper
+├── docker-compose.yml             # Docker setup for local testing
+├── package.json                   # Package configuration
+├── tsconfig.json                  # TypeScript configuration
+└── README.md                      # This file
+```
+
+### Available npm Scripts
+
+- `npm run build`: Build the node
+- `npm run dev`: Watch for changes and rebuild automatically
+- `npm run format`: Format code with Prettier
+- `npm run lint`: Lint code with ESLint
+- `npm run lintfix`: Auto-fix linting issues
+
+### Docker Environment
+
+The project includes a Docker Compose setup for easy local testing:
+
+- **n8n**: The workflow automation platform (port 5678)
+- **postgres**: PostgreSQL database for n8n (optional, for production-like setup)
+
+To start:
 
 ```bash
-npm run lint
+docker-compose up -d
 ```
 
-### TypeScript
+To stop:
 
-The node is written in TypeScript and compiled to JavaScript in the `dist` directory.
+```bash
+docker-compose down
+```
 
-## API Documentation
+To view logs:
 
-For detailed API documentation, refer to:
-- [Kimai REST API Documentation](https://www.kimai.org/documentation/rest-api.html)
-- [Kimai API Reference](https://www.kimai.org/documentation/rest-api.html)
+```bash
+docker-compose logs -f n8n
+```
+
+### API Coverage
+
+This node implements all major Kimai API endpoints:
+
+✅ Activities (CRUD + rates + meta fields)  
+✅ Customers (CRUD + rates + meta fields)  
+✅ Projects (CRUD + rates + meta fields)  
+✅ Tags (CRUD operations)  
+✅ Teams (CRUD + member management + access control)  
+✅ Timesheets (CRUD + stop/restart/duplicate/export + meta fields)  
+✅ Users (CRUD + preferences + API token management)  
+✅ Invoices (Read operations)  
+✅ System (Config, colors, ping, version, plugins)
+
+Based on the official Kimai REST API.
+
+## Contributing
+
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+Quick start:
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## Publishing
+
+### Automated Publishing
+
+This project uses GitHub Actions to automatically publish to npm when a new release is created:
+
+1. **Update version** in `package.json`
+2. **Update** `CHANGELOG.md` with changes
+3. **Commit and push** changes
+4. **Create a tag**:
+   ```bash
+   git tag -a v1.0.1 -m "Release v1.0.1"
+   git push origin v1.0.1
+   ```
+5. **Create GitHub Release** - Publishing to npm happens automatically
+
+### GitHub Actions Workflows
+
+- **Build & Test** - Runs on every push/PR
+- **Version Check** - Ensures version is bumped in PRs
+- **Publish to npm** - Automatic when GitHub release is created
+
+## Issues
+
+If you encounter any issues or have questions, please [open an issue on GitHub](https://github.com/Pixel-Process-UG/n8n-nodes-kimai/issues).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
 
 ## License
 
 MIT
 
-## Development
+## Author
 
-See [README.DOCKER.md](README.DOCKER.md) for local development setup with Docker.
+**Pixel & Process UG (haftungsbeschränkt)**
 
-## Support
+- Email: info@pixel-process.com
+- GitHub: [@Pixel-Process-UG](https://github.com/Pixel-Process-UG)
 
-- [Kimai Documentation](https://www.kimai.org/documentation/)
-- [n8n Community Forum](https://community.n8n.io/)
-- [GitHub Issues](https://github.com/Pixel-Process-UG/n8n-nodes-kimai/issues)
+## Acknowledgments
 
-## Contributing
+- Built on top of [n8n](https://n8n.io/)
+- Integrates with [Kimai](https://www.kimai.org/) time-tracking software
+- Based on the Kimai REST API
+- Created by Pixel & Process - Digital agency for marketing, web development, and automation
 
-Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our development process and how to submit pull requests.
+## About Pixel & Process
 
-## Changelog
+Pixel & Process is a digital agency based in Lübeck, Germany, specializing in:
 
-See [CHANGELOG.md](CHANGELOG.md) for detailed version history.
+- 📈 **Performance Marketing** - Google Ads, Meta, LinkedIn
+- 🎨 **Web Design & Development** - Next.js, React, modern web technologies
+- ⚙️ **Process Automation** - n8n, workflow automation, efficiency optimization
+- 🔓 **Open Source Solutions** - GDPR-compliant, sustainable digital transformation
+
+We build tools like this n8n-kimai node to help businesses automate their time tracking and improve efficiency.
+
+🌐 **Website**: [pixelandprocess.de](https://pixelandprocess.de)  
+📧 **Contact**: info@pixel-process.com  
+📍 **Location**: Lübeck, Germany
+
+---
+
+**Note**: This is a community-created node and is not officially maintained by n8n GmbH or the Kimai project.
 
