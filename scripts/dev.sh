@@ -1,45 +1,31 @@
 #!/bin/bash
 
-# Development helper script for n8n-kimai node
+# Development helper script for n8n-mailcoach node
 
 set -e
 
-echo "=== Starting development environment ==="
+echo "🚀 Starting n8n-mailcoach development environment..."
 
-# Check if Docker is running
-if ! docker info > /dev/null 2>&1; then
-    echo "Error: Docker is not running. Please start Docker and try again."
-    exit 1
+# Check if dist folder exists
+if [ ! -d "dist" ]; then
+    echo "📦 Building node for the first time..."
+    npm run build
 fi
 
-# Install dependencies if needed
-if [ ! -d "node_modules" ]; then
-    echo "Installing npm dependencies..."
-    npm install
-fi
-
-# Build the node once
-echo "Building Kimai node..."
-npm run build
-
-# Start n8n if not already running
-if ! docker ps | grep -q n8n-kimai-test; then
-    echo "Starting n8n container..."
-    docker compose up -d 2>/dev/null || docker-compose up -d
-    sleep 5
-fi
+# Start docker-compose
+echo "🐳 Starting Docker containers..."
+docker-compose up -d
 
 echo ""
-echo "=== Development Environment Ready ==="
-echo "n8n is available at: http://localhost:5678"
+echo "✅ Development environment is ready!"
 echo ""
-echo "To watch for changes and rebuild automatically, run:"
-echo "  npm run dev"
+echo "📍 n8n is available at: http://localhost:5678"
+echo "🔐 Login credentials:"
+echo "   Username: admin"
+echo "   Password: admin123"
 echo ""
-echo "To manually rebuild and reinstall the node:"
-echo "  ./scripts/rebuild.sh"
+echo "💡 To rebuild the node after changes, run: npm run build"
+echo "💡 To watch for changes, run: npm run dev (in another terminal)"
+echo "💡 To view logs: docker-compose logs -f n8n"
+echo "💡 To stop: docker-compose down"
 echo ""
-echo "To view n8n logs:"
-echo "  docker compose logs -f n8n"
-echo ""
-

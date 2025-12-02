@@ -1,43 +1,26 @@
 #!/bin/bash
 
-# Testing helper script for n8n-kimai node
+# Test script for n8n-mailcoach node
 
 set -e
 
-echo "=== Testing n8n-kimai node ==="
+echo "🧪 Testing n8n-mailcoach node..."
 
 # Build the node
-echo "Building node..."
+echo "📦 Building node..."
 npm run build
 
-# Check if build was successful
-if [ ! -f "dist/nodes/Kimai/Kimai.node.js" ]; then
-    echo "❌ Build failed: dist/nodes/Kimai/Kimai.node.js not found"
-    exit 1
-fi
-
-if [ ! -f "dist/credentials/KimaiApi.credentials.js" ]; then
-    echo "❌ Build failed: dist/credentials/KimaiApi.credentials.js not found"
-    exit 1
-fi
-
-if [ ! -f "dist/icons/kimai.svg" ]; then
-    echo "❌ Build failed: dist/icons/kimai.svg not found"
-    exit 1
-fi
-
-echo "✅ All required files built successfully"
-
-# Lint the code
-echo "Running linter..."
-npm run lint
+# Start n8n with the custom node
+echo "🐳 Starting n8n test environment..."
+docker-compose up -d n8n
 
 echo ""
-echo "✅ All tests passed!"
+echo "✅ Test environment is ready!"
 echo ""
-echo "To test in n8n:"
-echo "  1. Run: ./scripts/setup.sh"
-echo "  2. Open: http://localhost:5678"
-echo "  3. Add the Kimai node to a workflow"
+echo "📍 Access n8n at: http://localhost:5678"
 echo ""
-
+echo "🔧 To configure Mailcoach credentials:"
+echo "   1. Go to Credentials → Add Credential"
+echo "   2. Search for 'Mailcoach API'"
+echo "   3. Enter your API Endpoint and API Token"
+echo ""
