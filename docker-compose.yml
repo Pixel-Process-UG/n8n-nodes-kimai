@@ -16,9 +16,13 @@ services:
       - N8N_PROTOCOL=http
       - WEBHOOK_URL=http://localhost:5678/
       - GENERIC_TIMEZONE=UTC
-      - NODE_ENV=production
+      - NODE_ENV=development
+      # Allow custom nodes from custom directory
+      - N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom
     volumes:
       - n8n_data:/home/node/.n8n
+      # Mount the built dist directory
+      - ./dist:/home/node/.n8n/custom/n8n-nodes-kimai:ro
     networks:
       - n8n-network
     healthcheck:
