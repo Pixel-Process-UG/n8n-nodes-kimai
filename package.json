@@ -1,59 +1,62 @@
 {
-	"name": "n8n-nodes-kimai",
-	"version": "1.0.0",
-	"description": "n8n community node for Kimai time-tracking software API integration",
-	"keywords": [
-		"n8n-community-node-package",
-		"kimai",
-		"time-tracking",
-		"timesheet"
-	],
-	"license": "MIT",
-	"homepage": "https://github.com/Pixel-Process-UG/n8n-nodes-kimai#readme",
-	"author": {
-		"name": "Pixel & Process UG (haftungsbeschränkt)",
-		"email": "florian@pixelandprocess.de"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Pixel-Process-UG/n8n-nodes-kimai.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Pixel-Process-UG/n8n-nodes-kimai/issues"
-	},
-	"main": "index.js",
-	"scripts": {
-		"build": "bash scripts/build.sh",
-		"dev": "tsc --watch",
-		"format": "prettier --write .",
-		"lint": "eslint nodes credentials --ext .ts",
-		"lintfix": "eslint nodes credentials --ext .ts --fix",
-		"prepublishOnly": "npm run build && npm run lint -s"
-	},
-	"files": [
-		"dist"
-	],
-	"n8n": {
-		"n8nNodesApiVersion": 1,
-		"credentials": [
-			"dist/credentials/KimaiApi.credentials.js"
-		],
-		"nodes": [
-			"dist/nodes/Kimai/Kimai.node.js"
-		]
-	},
-	"devDependencies": {
-		"@typescript-eslint/eslint-plugin": "^5.45.0",
-		"@typescript-eslint/parser": "^5.45.0",
-		"eslint": "^8.28.0",
-		"eslint-plugin-n8n-nodes-base": "^1.11.0",
-		"gulp": "^4.0.2",
-		"n8n-workflow": "*",
-		"prettier": "^2.8.0",
-		"typescript": "^4.9.5"
-	},
-	"peerDependencies": {
-		"n8n-workflow": "*"
-	}
+    "name": "n8n-nodes-kimai",
+    "version": "1.0.0",
+    "description": "n8n community node for Kimai time-tracking software API integration",
+    "keywords": [
+        "n8n-community-node-package",
+        "kimai",
+        "time-tracking",
+        "timesheet"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/Pixel-Process-UG/n8n-nodes-kimai#readme",
+    "author": {
+        "name": "Pixel & Process UG (haftungsbeschränkt)",
+        "email": "info@pixelandprocess.de"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Pixel-Process-UG/n8n-nodes-kimai.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Pixel-Process-UG/n8n-nodes-kimai/issues"
+    },
+    "main": "index.js",
+    "scripts": {
+        "build": "bash scripts/build.sh",
+        "dev": "tsc --watch",
+        "format": "prettier --write .",
+        "lint": "eslint nodes credentials --ext .ts",
+        "lintfix": "eslint nodes credentials --ext .ts --fix",
+        "prepublishOnly": "npm run build && npm run lint -s"
+    },
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
+    },
+    "n8n": {
+        "n8nNodesApiVersion": 1,
+        "credentials": [
+            "dist/credentials/KimaiApi.credentials.js"
+        ],
+        "nodes": [
+            "dist/nodes/Kimai/Kimai.node.js"
+        ]
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.45.0",
+        "@typescript-eslint/parser": "^5.45.0",
+        "eslint": "^8.28.0",
+        "eslint-plugin-n8n-nodes-base": "^1.11.0",
+        "gulp": "^4.0.2",
+        "n8n-workflow": "*",
+        "prettier": "^2.8.0",
+        "typescript": "^4.9.5"
+    },
+    "peerDependencies": {
+        "n8n-workflow": "*"
+    }
 }
-

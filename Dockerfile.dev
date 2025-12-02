@@ -1,0 +1,33 @@
+# Development Dockerfile for n8n with Kimai node
+# This allows you to test the node in a containerized n8n environment
+
+FROM n8nio/n8n:latest
+
+# Switch to root to install packages
+USER root
+
+# Install development tools
+RUN apk add --no-cache \
+    bash \
+    curl \
+    git \
+    vim
+
+# Create directory for custom nodes
+RUN mkdir -p /home/node/.n8n/custom
+
+# Set ownership
+RUN chown -R node:node /home/node/.n8n
+
+# Switch back to node user
+USER node
+
+# Set working directory
+WORKDIR /home/node/.n8n
+
+# Expose n8n port
+EXPOSE 5678
+
+# Start n8n
+CMD ["n8n"]
+
