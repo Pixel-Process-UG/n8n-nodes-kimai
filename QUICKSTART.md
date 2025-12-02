@@ -16,8 +16,9 @@
 
 2. **Start n8n with Docker:**
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
+   (or `docker-compose up -d` if using older Docker Compose)
 
 3. **Install the Kimai node:**
    ```bash
@@ -57,7 +58,7 @@ npm run build
 ### Troubleshooting
 
 **Node not appearing:**
-1. Check container logs: `docker-compose logs n8n`
+1. Check container logs: `docker compose logs n8n` (or `docker-compose logs n8n`)
 2. Verify files in container: `docker exec n8n-kimai-test ls -la /home/node/.n8n/nodes/n8n-nodes-kimai/`
 3. Restart container: `docker restart n8n-kimai-test`
 
@@ -68,11 +69,13 @@ npm run build
 ### Stopping n8n
 
 ```bash
-docker-compose down
+docker compose down
 ```
+(or `docker-compose down` for older versions)
 
 To remove all data:
 ```bash
-docker-compose down -v
+docker compose down -v
 ```
+(or `docker-compose down -v` for older versions)
 

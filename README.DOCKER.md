@@ -34,8 +34,9 @@ This script will:
 
 2. **Start n8n:**
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
+   (or `docker-compose up -d` if using older Docker Compose)
 
 3. **Install the node:**
    ```bash
@@ -68,18 +69,21 @@ This will:
 
 ### Start n8n
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
+(or `docker-compose up -d` for older versions)
 
 ### Stop n8n
 ```bash
-docker-compose down
+docker compose down
 ```
+(or `docker-compose down` for older versions)
 
 ### View logs
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
+(or `docker-compose logs -f` for older versions)
 
 ### Access container shell
 ```bash
