@@ -11,3 +11,4 @@ module.exports = {
 		'n8n-nodes-base/node-param-description-missing-final-period': 'warn',
 	},
 };
+

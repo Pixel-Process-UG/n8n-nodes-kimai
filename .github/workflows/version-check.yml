@@ -40,3 +40,4 @@ jobs:
           else
             echo "✅ Version updated from $MAIN_VERSION to $PR_VERSION"
           fi
+

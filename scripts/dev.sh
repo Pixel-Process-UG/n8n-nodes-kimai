@@ -29,3 +29,4 @@ echo "💡 To watch for changes, run: npm run dev (in another terminal)"
 echo "💡 To view logs: docker-compose logs -f n8n"
 echo "💡 To stop: docker-compose down"
 echo ""
+

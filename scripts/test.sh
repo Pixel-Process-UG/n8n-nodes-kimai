@@ -24,3 +24,4 @@ echo "   1. Go to Credentials → Add Credential"
 echo "   2. Search for 'Mailcoach API'"
 echo "   3. Enter your API Endpoint and API Token"
 echo ""
+
