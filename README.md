@@ -275,7 +275,7 @@ See [README.DOCKER.md](README.DOCKER.md) for local development setup with Docker
 
 - [Kimai Documentation](https://www.kimai.org/documentation/)
 - [n8n Community Forum](https://community.n8n.io/)
-- [GitHub Issues](https://github.com/fwartner/n8n-kimai/issues)
+- [GitHub Issues](https://github.com/Pixel-Process-UG/n8n-nodes-kimai/issues)
 
 ## Contributing
 

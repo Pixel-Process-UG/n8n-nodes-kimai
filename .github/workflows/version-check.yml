@@ -1,0 +1,37 @@
+name: Version Check
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: Get version from package.json
+      id: package-version
+      run: |
+        VERSION=$(node -p "require('./package.json').version")
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+    
+    - name: Check if version was bumped
+      run: |
+        git fetch origin main:main
+        MAIN_VERSION=$(git show main:package.json | node -p "JSON.parse(require('fs').readFileSync('/dev/stdin', 'utf8')).version")
+        PR_VERSION=${{ steps.package-version.outputs.version }}
+        
+        echo "Main branch version: $MAIN_VERSION"
+        echo "PR version: $PR_VERSION"
+        
+        if [ "$MAIN_VERSION" = "$PR_VERSION" ]; then
+          echo "❌ Version not bumped! Please update version in package.json"
+          exit 1
+        else
+          echo "✅ Version bumped from $MAIN_VERSION to $PR_VERSION"
+        fi
+

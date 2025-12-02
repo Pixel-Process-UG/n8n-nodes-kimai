@@ -40,5 +40,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ES2020 target
 - CommonJS module format
 
-[1.0.0]: https://github.com/fwartner/n8n-kimai/releases/tag/v1.0.0
+[1.0.0]: https://github.com/Pixel-Process-UG/n8n-nodes-kimai/releases/tag/v1.0.0
 
