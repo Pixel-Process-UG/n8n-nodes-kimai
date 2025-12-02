@@ -1,7 +1,7 @@
 services:
   n8n:
     image: n8nio/n8n:latest
-    container_name: n8n-mailcoach-test
+    container_name: n8n-kimai-test
     restart: unless-stopped
     ports:
       - "5678:5678"
@@ -16,7 +16,7 @@ services:
       - N8N_CUSTOM_EXTENSIONS=/data/custom-nodes
     volumes:
       - n8n_data:/home/node/.n8n
-      - ./:/data/custom-nodes/n8n-nodes-mailcoach:ro
+      - ./:/data/custom-nodes/n8n-nodes-kimai:ro
     networks:
       - n8n-network
 
