@@ -43,3 +43,5 @@ api-docs.json
 # Temporary files
 *.tmp
 *.temp
+
+CLAUDE.md
