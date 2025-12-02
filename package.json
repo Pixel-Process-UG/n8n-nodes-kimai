@@ -19,7 +19,7 @@
 	},
 	"main": "index.js",
 	"scripts": {
-		"build": "tsc && gulp build:icons",
+		"build": "bash scripts/build.sh",
 		"dev": "tsc --watch",
 		"format": "prettier --write .",
 		"lint": "eslint nodes credentials --ext .ts",

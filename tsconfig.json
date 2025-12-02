@@ -14,6 +14,11 @@
 		"typeRoots": ["node_modules/@types"]
 	},
 	"include": ["credentials/**/*", "nodes/**/*", "nodes/**/*.json"],
-	"exclude": ["node_modules", "dist"]
+	"exclude": [
+		"node_modules",
+		"dist",
+		"**/node_modules/**",
+		"**/zod/**"
+	]
 }
 
